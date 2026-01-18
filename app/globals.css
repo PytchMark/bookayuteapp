@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-ink text-white antialiased;
+  font-feature-settings: "ss01" 1, "ss02" 1;
+}
+
+::selection {
+  background: rgba(255, 47, 47, 0.4);
+}
+
+.glass {
+  background: rgba(11, 11, 15, 0.75);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glow-border {
+  box-shadow: 0 0 20px rgba(255, 47, 47, 0.2);
+}
+
+.tilt-card {
+  transform-style: preserve-3d;
+}
