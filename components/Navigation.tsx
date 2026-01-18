@@ -34,7 +34,7 @@ export default function Navigation() {
         <div className="flex items-center gap-3">
           <Link
             href="/apply"
-            className="rounded-full border border-white/20 px-5 py-2 text-xs uppercase tracking-[0.3em] text-white/80 transition hover:border-scarlet hover:text-white"
+            className="rounded-xl border border-white/20 px-5 py-2 text-xs uppercase tracking-[0.3em] text-white/80 transition hover:border-scarlet hover:text-white"
           >
             Join
           </Link>

@@ -15,19 +15,34 @@ export const metadata = {
 
 export default function RosterPage() {
   return (
-    <div className="mx-auto max-w-6xl space-y-10 px-6 py-16">
-      <div className="space-y-3">
+    <div className="mx-auto max-w-6xl space-y-16 px-6 py-16">
+      <section className="space-y-4">
         <p className="text-xs uppercase tracking-[0.3em] text-scarlet">Global Talent</p>
         <h1 className="text-4xl font-semibold">Roster</h1>
         <p className="max-w-2xl text-sm text-white/70">
-          A premium line-up of artists, performers, and tastemakers ready for exclusive bookings.
+          A curated line-up of artists, performers, and tastemakers ready for executive-level
+          bookings.
         </p>
-      </div>
-      <div className="grid gap-6 md:grid-cols-3">
-        {roster.map((artist) => (
-          <TalentCard key={artist.slug} {...artist} />
-        ))}
-      </div>
+        <p className="max-w-2xl text-sm text-white/60">
+          You request. We vet, negotiate, and secure. No back-channel chaos.
+        </p>
+      </section>
+
+      <section className="space-y-6">
+        <div className="flex items-end justify-between">
+          <h2 className="text-2xl font-semibold">Editorial Talent Grid</h2>
+          <span className="text-xs uppercase tracking-[0.3em] text-white/60">Request-ready</span>
+        </div>
+        <p className="max-w-2xl text-sm text-white/70">
+          Each card opens a direct booking request. We respond with timelines, pricing, and
+          availability.
+        </p>
+        <div className="grid gap-6 md:grid-cols-3">
+          {roster.map((artist) => (
+            <TalentCard key={artist.slug} {...artist} />
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

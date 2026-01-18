@@ -37,7 +37,7 @@ const rosterNames = [
 export default function HomePage() {
   return (
     <div className="space-y-24">
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden rounded-[32px]">
         <div className="absolute inset-0">
           <video
             autoPlay
@@ -52,23 +52,26 @@ export default function HomePage() {
         </div>
         <div className="relative mx-auto flex min-h-[80vh] max-w-6xl flex-col justify-center gap-6 px-6 py-20">
           <p className="text-xs uppercase tracking-[0.4em] text-scarlet">Premium Talent Booking</p>
-          <h1 className="text-4xl font-semibold md:text-6xl">
-            Red-carpet talent experiences for stages, brands, and elevated events.
-          </h1>
+          <h1 className="text-4xl font-semibold md:text-6xl">BOOK VERIFIED TALENT.</h1>
           <p className="max-w-xl text-sm text-white/70">
-            BookaYute curates a global roster of artists, DJs, and performers. Every detail is
-            managed end-to-end for seamless, luxury-level delivery.
+            Curated roster powered by Pytch Marketing. Represented professionally. Booked
+            properly.
           </p>
           <div className="flex flex-wrap gap-4">
-            <Link
-              href="/roster"
-              className="rounded-full bg-scarlet px-6 py-3 text-xs uppercase tracking-[0.3em] text-white shadow-glow transition hover:scale-105"
+            <motion.div
+              animate={{ scale: [1, 1.03, 1] }}
+              transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
             >
-              Explore Roster
-            </Link>
+              <Link
+                href="/roster"
+                className="rounded-xl bg-scarlet px-6 py-3 text-xs uppercase tracking-[0.3em] text-white shadow-glow transition hover:scale-105"
+              >
+                Explore Roster
+              </Link>
+            </motion.div>
             <Link
               href="/request/featured"
-              className="rounded-full border border-white/20 px-6 py-3 text-xs uppercase tracking-[0.3em] text-white/80 transition hover:border-scarlet"
+              className="rounded-xl border border-white/20 px-6 py-3 text-xs uppercase tracking-[0.3em] text-white/80 transition hover:border-scarlet"
             >
               Request Booking
             </Link>
@@ -81,6 +84,9 @@ export default function HomePage() {
           <h2 className="text-3xl font-semibold">Events We Cover</h2>
           <span className="text-xs uppercase tracking-[0.3em] text-white/60">Worldwide</span>
         </div>
+        <p className="max-w-2xl text-sm text-white/70">
+          From closed-door boardrooms to stadium-scale spectacles. No DM gymnastics.
+        </p>
         <div className="grid gap-4 md:grid-cols-3">
           {eventTypes.map((event) => (
             <div
@@ -111,6 +117,9 @@ export default function HomePage() {
             See full roster
           </Link>
         </div>
+        <p className="max-w-2xl text-sm text-white/70">
+          Editorial-level talent with verified readiness. Booked properly, represented professionally.
+        </p>
         <div className="grid gap-6 md:grid-cols-3">
           {featuredArtists.map((artist) => (
             <TalentCard key={artist.slug} {...artist} />
@@ -123,6 +132,9 @@ export default function HomePage() {
           <h2 className="text-3xl font-semibold">Already Signed</h2>
           <span className="text-xs uppercase tracking-[0.3em] text-white/60">Roster spotlight</span>
         </div>
+        <p className="max-w-2xl text-sm text-white/70">
+          Names that travel well, behave well, and deliver on cue.
+        </p>
         <div className="space-y-4">
           {[0, 1].map((row) => (
             <div
@@ -143,41 +155,139 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section className="mx-auto max-w-6xl space-y-10 px-6 pb-20">
+      <Section className="mx-auto max-w-6xl space-y-10 px-6">
         <div className="flex items-end justify-between">
-          <h2 className="text-3xl font-semibold">Book With Us</h2>
-          <span className="text-xs uppercase tracking-[0.3em] text-white/60">Three-step close</span>
+          <h2 className="text-3xl font-semibold">Trust Signals</h2>
+          <span className="text-xs uppercase tracking-[0.3em] text-white/60">Proof, not hype</span>
         </div>
+        <p className="max-w-2xl text-sm text-white/70">
+          Contracts handled. Logistics handled. Talent vetted. Your brand protected.
+        </p>
+        <div className="overflow-hidden rounded-2xl border border-white/10 bg-graphite/40 py-4">
+          <motion.div
+            animate={{ x: ['0%', '-50%'] }}
+            transition={{ repeat: Infinity, duration: 24, ease: 'linear' }}
+            className="flex gap-10 whitespace-nowrap px-6 text-xs uppercase tracking-[0.4em] text-white/60"
+          >
+            {[
+              'Verified talent',
+              'Contracts managed',
+              'Brand-safe roster',
+              'White-glove logistics',
+              'Single point of contact',
+              'Global availability',
+              'Agency-grade vetting',
+            ]
+              .concat([
+                'Verified talent',
+                'Contracts managed',
+                'Brand-safe roster',
+                'White-glove logistics',
+                'Single point of contact',
+                'Global availability',
+                'Agency-grade vetting',
+              ])
+              .map((signal, index) => (
+                <span key={`${signal}-${index}`}>{signal}</span>
+              ))}
+          </motion.div>
+        </div>
+      </Section>
+
+      <Section className="mx-auto max-w-6xl space-y-10 px-6">
+        <div className="flex items-end justify-between">
+          <h2 className="text-3xl font-semibold">How Booking Works</h2>
+          <span className="text-xs uppercase tracking-[0.3em] text-white/60">Three steps</span>
+        </div>
+        <p className="max-w-2xl text-sm text-white/70">
+          A clean, executive flow built for busy teams and decisive clients.
+        </p>
         <div className="grid gap-6 md:grid-cols-3">
           {[
             {
-              title: 'Tell us the vision',
-              copy: 'Share dates, budget, and the energy you need on stage.',
+              title: 'Share the brief',
+              copy: 'Dates, budget, and the exact energy you expect on stage.',
             },
             {
-              title: 'We curate the talent',
-              copy: 'Our team aligns the perfect performers to match your brand.',
+              title: 'We curate the roster',
+              copy: 'We shortlist talent that aligns with your brand and audience.',
             },
             {
-              title: 'We handle the show',
-              copy: 'Contracts, logistics, and show-flow are fully managed.',
+              title: 'We execute',
+              copy: 'Contracts, logistics, and show flow handled end-to-end.',
             },
           ].map((step) => (
             <div
               key={step.title}
-              className="rounded-3xl border border-white/10 bg-graphite/60 p-6 shadow-glow"
+              className="rounded-2xl border border-white/10 bg-graphite/60 p-6 shadow-glow"
             >
               <h3 className="text-lg font-semibold">{step.title}</h3>
               <p className="mt-3 text-sm text-white/70">{step.copy}</p>
             </div>
           ))}
         </div>
-        <Link
-          href="/request/featured"
-          className="block rounded-full bg-scarlet py-4 text-center text-sm uppercase tracking-[0.4em] text-white shadow-glow transition hover:scale-[1.02]"
+      </Section>
+
+      <Section className="mx-auto max-w-6xl space-y-10 px-6">
+        <div className="flex items-end justify-between">
+          <h2 className="text-3xl font-semibold">Why This Roster Exists</h2>
+          <span className="text-xs uppercase tracking-[0.3em] text-white/60">The standard</span>
+        </div>
+        <p className="max-w-3xl text-sm text-white/70">
+          Because serious bookings need serious structure. We cut the chaos, remove the guesswork,
+          and make talent access feel like a boardroom decision.
+        </p>
+        <div className="grid gap-6 md:grid-cols-3">
+          {[
+            { title: 'Verified only', copy: 'Every artist is vetted for readiness and professionalism.' },
+            { title: 'Built for brands', copy: 'Contracts, timelines, and expectations stay tight.' },
+            { title: 'Confidence on call', copy: 'One team, one process, no loose ends.' },
+          ].map((item) => (
+            <div
+              key={item.title}
+              className="rounded-2xl border border-white/10 bg-graphite/60 p-6"
+            >
+              <h3 className="text-lg font-semibold">{item.title}</h3>
+              <p className="mt-3 text-sm text-white/70">{item.copy}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section className="mx-auto max-w-6xl space-y-10 px-6 pb-20">
+        <div className="flex items-end justify-between">
+          <h2 className="text-3xl font-semibold">Who This Is For</h2>
+          <span className="text-xs uppercase tracking-[0.3em] text-white/60">Decision makers</span>
+        </div>
+        <p className="max-w-2xl text-sm text-white/70">
+          Brand leaders, event producers, and creative directors who need talent without the noise.
+        </p>
+        <div className="grid gap-6 md:grid-cols-3">
+          {[
+            { title: 'Luxury & lifestyle', copy: 'Premium activations that demand flawless talent.' },
+            { title: 'Corporate & private', copy: 'Executive-level bookings with zero surprises.' },
+            { title: 'Media & culture', copy: 'Editorial-ready talent that looks right on camera.' },
+          ].map((item) => (
+            <div
+              key={item.title}
+              className="rounded-2xl border border-white/10 bg-graphite/60 p-6"
+            >
+              <h3 className="text-lg font-semibold">{item.title}</h3>
+              <p className="mt-3 text-sm text-white/70">{item.copy}</p>
+            </div>
+          ))}
+        </div>
+        <motion.div
+          animate={{ scale: [1, 1.02, 1] }}
+          transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
         >
-          Book Now
-        </Link>
+          <Link
+            href="/request/featured"
+            className="block rounded-xl bg-scarlet py-4 text-center text-sm uppercase tracking-[0.4em] text-white shadow-glow transition hover:scale-[1.02]"
+          >
+            Book Now
+          </Link>
+        </motion.div>
       </Section>
     </div>
   );
