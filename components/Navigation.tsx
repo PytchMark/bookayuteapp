@@ -13,10 +13,11 @@ export default function Navigation() {
   return (
     <motion.header
       initial={{ y: -20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
+      animate={{ y: [0, -2, 0], opacity: 1 }}
+      transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
       className="fixed left-0 right-0 top-0 z-40"
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <div className="mx-auto flex max-w-6xl items-center justify-between rounded-2xl border border-white/10 bg-black/70 px-6 py-4 backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.4),0_0_30px_rgba(255,47,47,0.18)]">
         <Link href="/" className="text-lg font-semibold tracking-[0.2em]">
           BOOKAYUTE
         </Link>

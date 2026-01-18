@@ -6,21 +6,86 @@ import Section from '../components/Section';
 import TalentCard from '../components/TalentCard';
 
 const featuredArtists = [
-  { name: 'Nova Keys', genre: 'Neo Soul', slug: 'nova-keys', highlight: 'Velvet vocals with cinematic soul.' },
-  { name: 'Crimson Pulse', genre: 'EDM', slug: 'crimson-pulse', highlight: 'Festival-ready synth energy.' },
-  { name: 'Sage Rivers', genre: 'R&B', slug: 'sage-rivers', highlight: 'Silky vocals with moody textures.' },
-  { name: 'The Arc Royals', genre: 'Pop', slug: 'arc-royals', highlight: 'Anthemic hooks and stadium glow.' },
-  { name: 'Juno Luxe', genre: 'Afro Fusion', slug: 'juno-luxe', highlight: 'Global rhythms with luxe flair.' },
-  { name: 'Maya Volt', genre: 'Hip-Hop', slug: 'maya-volt', highlight: 'Electric charisma on every stage.' },
+  {
+    name: 'Nova Keys',
+    category: 'Neo Soul',
+    location: 'Los Angeles, CA',
+    slug: 'nova-keys',
+    highlight: 'Velvet vocals with cinematic soul.',
+    tags: ['Festival-ready', 'Luxury brands'],
+    mediaClass: 'from-scarlet/30 via-black/70 to-ink',
+  },
+  {
+    name: 'Crimson Pulse',
+    category: 'EDM',
+    location: 'Berlin, DE',
+    slug: 'crimson-pulse',
+    highlight: 'Festival-ready synth energy.',
+    tags: ['Main stage', 'Visual show'],
+    mediaClass: 'from-red-500/20 via-black/60 to-black/90',
+  },
+  {
+    name: 'Sage Rivers',
+    category: 'R&B',
+    location: 'New York, NY',
+    slug: 'sage-rivers',
+    highlight: 'Silky vocals with moody textures.',
+    tags: ['Corporate', 'Private suites'],
+    mediaClass: 'from-scarlet/20 via-graphite/70 to-black/90',
+  },
+  {
+    name: 'The Arc Royals',
+    category: 'Pop',
+    location: 'London, UK',
+    slug: 'arc-royals',
+    highlight: 'Anthemic hooks and stadium glow.',
+    tags: ['Arena-ready', 'Brand events'],
+    mediaClass: 'from-rose-500/20 via-black/60 to-ink',
+  },
+  {
+    name: 'Juno Luxe',
+    category: 'Afro Fusion',
+    location: 'Lagos, NG',
+    slug: 'juno-luxe',
+    highlight: 'Global rhythms with luxe flair.',
+    tags: ['International', 'Resorts'],
+    mediaClass: 'from-red-400/30 via-black/70 to-black/90',
+  },
+  {
+    name: 'Maya Volt',
+    category: 'Hip-Hop',
+    location: 'Atlanta, GA',
+    slug: 'maya-volt',
+    highlight: 'Electric charisma on every stage.',
+    tags: ['Nightlife', 'Brand deals'],
+    mediaClass: 'from-scarlet/25 via-black/70 to-black/90',
+  },
 ];
 
 const eventTypes = [
   'Festivals',
-  'Private Celebrations',
-  'Corporate Summits',
+  'Corporate',
+  'Weddings',
   'Brand Activations',
-  'Luxury Retreats',
-  'Global Tours',
+  'Private Parties',
+  'Nightlife',
+  'Hotels/Resorts',
+  'Conferences',
+  'Cultural Showcases',
+  'Campus',
+];
+
+const marqueeEvents = [
+  'Festivals',
+  'Corporate',
+  'Weddings',
+  'Activations',
+  'Private Parties',
+  'Nightlife',
+  'Hotels/Resorts',
+  'Conferences',
+  'Cultural Showcases',
+  'Campus',
 ];
 
 const rosterNames = [
@@ -32,6 +97,8 @@ const rosterNames = [
   'Luna Crest',
   'Nox Vale',
   'Ayana C',
+  'Vera Sol',
+  'Orion Hale',
 ];
 
 export default function HomePage() {
@@ -70,7 +137,7 @@ export default function HomePage() {
               </Link>
             </motion.div>
             <Link
-              href="/request/featured"
+              href="/request"
               className="rounded-xl border border-white/20 px-6 py-3 text-xs uppercase tracking-[0.3em] text-white/80 transition hover:border-scarlet"
             >
               Request Booking
@@ -80,46 +147,62 @@ export default function HomePage() {
       </section>
 
       <Section className="mx-auto max-w-6xl space-y-10 px-6">
-        <div className="flex items-end justify-between">
-          <h2 className="text-3xl font-semibold">Events We Cover</h2>
-          <span className="text-xs uppercase tracking-[0.3em] text-white/60">Worldwide</span>
+        <div className="space-y-4">
+          <p className="text-xs uppercase tracking-[0.35em] text-scarlet">Events We Cover</p>
+          <h2 className="text-3xl font-semibold">Booked for the moments that matter.</h2>
+          <p className="max-w-2xl text-sm text-white/70">
+            Tell us the event. We&rsquo;ll match the talent.
+          </p>
         </div>
-        <p className="max-w-2xl text-sm text-white/70">
-          From closed-door boardrooms to stadium-scale spectacles. No DM gymnastics.
-        </p>
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-5">
           {eventTypes.map((event) => (
             <div
               key={event}
-              className="rounded-2xl border border-white/10 bg-graphite/70 p-6 text-sm uppercase tracking-[0.25em] text-white/80"
+              className="rounded-2xl border border-white/10 bg-graphite/70 px-4 py-5 text-xs uppercase tracking-[0.25em] text-white/80"
             >
               {event}
             </div>
           ))}
         </div>
-        <div className="overflow-hidden rounded-2xl border border-white/10 bg-graphite/40 py-4">
+        <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-graphite/40 py-5">
           <motion.div
             animate={{ x: ['0%', '-50%'] }}
             transition={{ repeat: Infinity, duration: 18, ease: 'linear' }}
             className="flex gap-8 whitespace-nowrap px-6 text-xs uppercase tracking-[0.4em] text-white/60"
           >
-            {eventTypes.concat(eventTypes).map((event, index) => (
+            {marqueeEvents.concat(marqueeEvents).map((event, index) => (
               <span key={`${event}-${index}`}>{event}</span>
             ))}
           </motion.div>
         </div>
+        <motion.div
+          animate={{ boxShadow: ['0 0 0 rgba(255,47,47,0)', '0 0 28px rgba(255,47,47,0.45)', '0 0 0 rgba(255,47,47,0)'] }}
+          transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut' }}
+          className="inline-flex rounded-2xl"
+        >
+          <Link
+            href="/request"
+            className="rounded-2xl bg-scarlet px-10 py-4 text-xs uppercase tracking-[0.35em] text-white transition hover:scale-[1.02]"
+          >
+            Request Talent
+          </Link>
+        </motion.div>
       </Section>
 
       <Section className="mx-auto max-w-6xl space-y-10 px-6">
         <div className="flex items-end justify-between">
-          <h2 className="text-3xl font-semibold">Featured Artists</h2>
+          <div className="space-y-3">
+            <p className="text-xs uppercase tracking-[0.35em] text-scarlet">Featured Artists</p>
+            <h2 className="text-3xl font-semibold">Curated talent with boardroom polish.</h2>
+            <p className="max-w-2xl text-sm text-white/70">
+              Editorial-level talent with verified readiness. Booked properly, represented
+              professionally.
+            </p>
+          </div>
           <Link href="/roster" className="text-xs uppercase tracking-[0.3em] text-scarlet">
             See full roster
           </Link>
         </div>
-        <p className="max-w-2xl text-sm text-white/70">
-          Editorial-level talent with verified readiness. Booked properly, represented professionally.
-        </p>
         <div className="grid gap-6 md:grid-cols-3">
           {featuredArtists.map((artist) => (
             <TalentCard key={artist.slug} {...artist} />
@@ -128,14 +211,15 @@ export default function HomePage() {
       </Section>
 
       <Section className="mx-auto max-w-6xl space-y-10 px-6">
-        <div className="flex items-end justify-between">
-          <h2 className="text-3xl font-semibold">Already Signed</h2>
-          <span className="text-xs uppercase tracking-[0.3em] text-white/60">Roster spotlight</span>
+        <div className="space-y-3">
+          <p className="text-xs uppercase tracking-[0.35em] text-scarlet">Already Signed</p>
+          <h2 className="text-3xl font-semibold">Talent already moving with us.</h2>
+          <p className="max-w-2xl text-sm text-white/70">
+            If you&rsquo;re ready for real bookings, apply.
+          </p>
         </div>
-        <p className="max-w-2xl text-sm text-white/70">
-          Names that travel well, behave well, and deliver on cue.
-        </p>
-        <div className="space-y-4">
+        <div className="relative space-y-4">
+          <div className="pointer-events-none absolute inset-x-0 -bottom-6 h-10 bg-gradient-to-r from-transparent via-scarlet/40 to-transparent blur-2xl" />
           {[0, 1].map((row) => (
             <div
               key={`marquee-${row}`}
@@ -153,141 +237,66 @@ export default function HomePage() {
             </div>
           ))}
         </div>
-      </Section>
-
-      <Section className="mx-auto max-w-6xl space-y-10 px-6">
-        <div className="flex items-end justify-between">
-          <h2 className="text-3xl font-semibold">Trust Signals</h2>
-          <span className="text-xs uppercase tracking-[0.3em] text-white/60">Proof, not hype</span>
-        </div>
-        <p className="max-w-2xl text-sm text-white/70">
-          Contracts handled. Logistics handled. Talent vetted. Your brand protected.
-        </p>
-        <div className="overflow-hidden rounded-2xl border border-white/10 bg-graphite/40 py-4">
-          <motion.div
-            animate={{ x: ['0%', '-50%'] }}
-            transition={{ repeat: Infinity, duration: 24, ease: 'linear' }}
-            className="flex gap-10 whitespace-nowrap px-6 text-xs uppercase tracking-[0.4em] text-white/60"
-          >
-            {[
-              'Verified talent',
-              'Contracts managed',
-              'Brand-safe roster',
-              'White-glove logistics',
-              'Single point of contact',
-              'Global availability',
-              'Agency-grade vetting',
-            ]
-              .concat([
-                'Verified talent',
-                'Contracts managed',
-                'Brand-safe roster',
-                'White-glove logistics',
-                'Single point of contact',
-                'Global availability',
-                'Agency-grade vetting',
-              ])
-              .map((signal, index) => (
-                <span key={`${signal}-${index}`}>{signal}</span>
-              ))}
-          </motion.div>
-        </div>
-      </Section>
-
-      <Section className="mx-auto max-w-6xl space-y-10 px-6">
-        <div className="flex items-end justify-between">
-          <h2 className="text-3xl font-semibold">How Booking Works</h2>
-          <span className="text-xs uppercase tracking-[0.3em] text-white/60">Three steps</span>
-        </div>
-        <p className="max-w-2xl text-sm text-white/70">
-          A clean, executive flow built for busy teams and decisive clients.
-        </p>
-        <div className="grid gap-6 md:grid-cols-3">
-          {[
-            {
-              title: 'Share the brief',
-              copy: 'Dates, budget, and the exact energy you expect on stage.',
-            },
-            {
-              title: 'We curate the roster',
-              copy: 'We shortlist talent that aligns with your brand and audience.',
-            },
-            {
-              title: 'We execute',
-              copy: 'Contracts, logistics, and show flow handled end-to-end.',
-            },
-          ].map((step) => (
-            <div
-              key={step.title}
-              className="rounded-2xl border border-white/10 bg-graphite/60 p-6 shadow-glow"
-            >
-              <h3 className="text-lg font-semibold">{step.title}</h3>
-              <p className="mt-3 text-sm text-white/70">{step.copy}</p>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      <Section className="mx-auto max-w-6xl space-y-10 px-6">
-        <div className="flex items-end justify-between">
-          <h2 className="text-3xl font-semibold">Why This Roster Exists</h2>
-          <span className="text-xs uppercase tracking-[0.3em] text-white/60">The standard</span>
-        </div>
-        <p className="max-w-3xl text-sm text-white/70">
-          Because serious bookings need serious structure. We cut the chaos, remove the guesswork,
-          and make talent access feel like a boardroom decision.
-        </p>
-        <div className="grid gap-6 md:grid-cols-3">
-          {[
-            { title: 'Verified only', copy: 'Every artist is vetted for readiness and professionalism.' },
-            { title: 'Built for brands', copy: 'Contracts, timelines, and expectations stay tight.' },
-            { title: 'Confidence on call', copy: 'One team, one process, no loose ends.' },
-          ].map((item) => (
-            <div
-              key={item.title}
-              className="rounded-2xl border border-white/10 bg-graphite/60 p-6"
-            >
-              <h3 className="text-lg font-semibold">{item.title}</h3>
-              <p className="mt-3 text-sm text-white/70">{item.copy}</p>
-            </div>
-          ))}
-        </div>
+        <Link
+          href="/apply"
+          className="inline-flex items-center justify-center rounded-2xl border border-white/20 px-8 py-3 text-xs uppercase tracking-[0.3em] text-white/80 transition hover:border-scarlet hover:bg-scarlet hover:text-white"
+        >
+          Join the Roster
+        </Link>
       </Section>
 
       <Section className="mx-auto max-w-6xl space-y-10 px-6 pb-20">
-        <div className="flex items-end justify-between">
-          <h2 className="text-3xl font-semibold">Who This Is For</h2>
-          <span className="text-xs uppercase tracking-[0.3em] text-white/60">Decision makers</span>
+        <div className="space-y-3">
+          <p className="text-xs uppercase tracking-[0.35em] text-scarlet">Book With Us</p>
+          <h2 className="text-3xl font-semibold">Book talent the professional way.</h2>
         </div>
-        <p className="max-w-2xl text-sm text-white/70">
-          Brand leaders, event producers, and creative directors who need talent without the noise.
-        </p>
-        <div className="grid gap-6 md:grid-cols-3">
-          {[
-            { title: 'Luxury & lifestyle', copy: 'Premium activations that demand flawless talent.' },
-            { title: 'Corporate & private', copy: 'Executive-level bookings with zero surprises.' },
-            { title: 'Media & culture', copy: 'Editorial-ready talent that looks right on camera.' },
-          ].map((item) => (
-            <div
-              key={item.title}
-              className="rounded-2xl border border-white/10 bg-graphite/60 p-6"
-            >
-              <h3 className="text-lg font-semibold">{item.title}</h3>
-              <p className="mt-3 text-sm text-white/70">{item.copy}</p>
+        <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="space-y-6 rounded-3xl border border-white/10 bg-graphite/60 p-8">
+            <h3 className="text-lg font-semibold">Book in 3 steps</h3>
+            <div className="space-y-5 text-sm text-white/70">
+              {[
+                'Submit the request.',
+                'We confirm availability + terms.',
+                'You get the show.',
+              ].map((step, index) => (
+                <div key={step} className="flex gap-4">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 text-xs text-scarlet">
+                    0{index + 1}
+                  </span>
+                  <p className="pt-1">{step}</p>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+          <div className="space-y-6 rounded-3xl border border-white/10 bg-graphite/50 p-8">
+            <h3 className="text-lg font-semibold">Trust in every step</h3>
+            <ul className="space-y-3 text-sm text-white/70">
+              {[
+                'Verified talent with executive-ready teams.',
+                'Contracts, logistics, and timelines handled.',
+                'Single point of contact from brief to encore.',
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <span className="mt-1 h-2 w-2 rounded-full bg-scarlet" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <motion.div
+              whileHover={{ scale: 1.03, y: -2 }}
+              animate={{ boxShadow: ['0 0 0 rgba(255,47,47,0)', '0 0 32px rgba(255,47,47,0.5)', '0 0 0 rgba(255,47,47,0)'] }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              className="inline-flex w-full"
+            >
+              <Link
+                href="/request"
+                className="flex w-full items-center justify-center rounded-2xl bg-scarlet px-8 py-5 text-sm uppercase tracking-[0.4em] text-white transition"
+              >
+                Book Now
+              </Link>
+            </motion.div>
+          </div>
         </div>
-        <motion.div
-          animate={{ scale: [1, 1.02, 1] }}
-          transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          <Link
-            href="/request/featured"
-            className="block rounded-xl bg-scarlet py-4 text-center text-sm uppercase tracking-[0.4em] text-white shadow-glow transition hover:scale-[1.02]"
-          >
-            Book Now
-          </Link>
-        </motion.div>
       </Section>
     </div>
   );
