@@ -11,6 +11,11 @@ body {
   font-feature-settings: "ss01" 1, "ss02" 1;
 }
 
+img,
+video {
+  @apply rounded-2xl;
+}
+
 ::selection {
   background: rgba(255, 47, 47, 0.4);
 }
