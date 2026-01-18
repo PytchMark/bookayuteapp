@@ -1,0 +1,2 @@
+-- Demo seed data placeholder
+-- Add insert statements for talent profiles or bookings as needed.
